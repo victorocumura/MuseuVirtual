@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US"><head><!-- Created by Artisteer v4.3.0.60745 -->
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no, width = device-width">
+
+    <!--[if lt IE 9]><script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <link rel="stylesheet" href="style.css" media="screen">
+    <!--[if lte IE 7]><link rel="stylesheet" href="style.ie7.css" media="screen" /><![endif]-->
+    <link rel="stylesheet" href="style.responsive.css" media="all">
+
+
+    <script src="jquery.js"></script>
+    <script src="script.js"></script>
+    <script src="script.responsive.js"></script>
+
+
+
+<script>jQuery(function ($) {
+    'use strict';
+    if ($.fn.themeSlider) {
+        $(".art-slidecontainer792222").each(function () {
+            var slideContainer = $(this), tmp;
+            var inner = $(".art-slider-inner", slideContainer);
+            inner.children().filter("script").remove();
+            var helper = null;
+            
+            if ($.support.themeTransition) {
+                helper = new BackgroundHelper();
+                helper.init("horizontal", "prev", $(".art-slide-item", inner).first().css($.support.themeTransition.prefix + "transition-duration"));
+                inner.children().each(function () {
+                    helper.processSlide($(this), true);
+                });
+
+                                var initialWidth = slideContainer.attr("data-width");
+                var initialHeight = slideContainer.attr("data-height");
+                helper.updateSize(inner, { width: initialWidth, height: initialHeight });
+                
+                var items = helper.items(helper.current(0), helper.next(0));
+                helper.setBackground(inner, items);
+                helper.setPosition(inner, items);
+
+                slideContainer.on("beforeSlide", function () {
+                    var activeItem = $(".active", this),
+                        nextItem = $(".next, .prev", this),
+                        activePos = $(".art-slide-item", this).index(activeItem),
+                        nextPos = $(".art-slide-item", this).index(nextItem);
+
+                    var currentItems = helper.items(helper.current(activePos), helper.current(nextPos));
+
+                    helper.transition(inner, false);
+                    helper.setBackground(inner, currentItems);
+                    helper.setPosition(inner, currentItems);
+                    if (inner.length) {
+                        tmp = inner.get(0).offsetHeight;
+                    }
+
+                    var movedCurrentItems = helper.items(helper.current(activePos), helper.current(nextPos), true);
+                    helper.transition(inner, true);
+                    helper.setPosition(inner, movedCurrentItems);
+                });
+                
+            } else if (browser.ie && browser.version <= 8) {
+                var slidesInfo = {
+".art-slide7922220": {
+    "bgimage" : "url('images/slide7922220.jpg')",
+    "bgposition": "0 0",
+    "images": "",
+    "positions": ""
+},
+".art-slide7922221": {
+    "bgimage" : "url('images/slide7922221.jpg')",
+    "bgposition": "0 0",
+    "images": "",
+    "positions": ""
+},
+".art-slide7922222": {
+    "bgimage" : "url('images/slide7922222.jpg')",
+    "bgposition": "0 0",
+    "images": "",
+    "positions": ""
+},
+".art-slide7922223": {
+    "bgimage" : "url('images/slide7922223.jpg')",
+    "bgposition": "0 0",
+    "images": "",
+    "positions": ""
+},
+".art-slide7922224": {
+    "bgimage" : "url('images/slide7922224.jpg')",
+    "bgposition": "0 0",
+    "images": "",
+    "positions": ""
+}
+                };
+                $.each(slidesInfo, function(selector, info) {
+                    processElementMultiplyBg(slideContainer.find(selector), info);
+                });
+            }
+
+            inner.children().eq(0).addClass("active");
+            slideContainer.themeSlider({
+                pause: 2600,
+                speed: 600,
+                repeat: true,
+                animation: "horizontal",
+                direction: "prev",
+                navigator: slideContainer.siblings(".art-slidenavigator792222"),
+                helper: helper
+            });
+            
+                        
+        });
+    }
+});
+</script><style>.art-content .art-postcontent-0 .layout-item-0 { padding-right: 10px;padding-left: 10px;  }
+.ie7 .art-post .art-layout-cell {border:none !important; padding:0 !important; }
+.ie6 .art-post .art-layout-cell {border:none !important; padding:0 !important; }
+
+.art-slidecontainer792222 {
+    position: relative;
+        width: 420px;
+    height: 259px;
+        }
+
+.default-responsive .art-header .art-slidecontainer792222,
+.responsive .art-header .art-slidecontainer792222
+{
+  position: absolute !important;
+}
+
+.responsive .art-pageslider .art-slidecontainer792222 {
+  position: absolute !important;
+}
+
+.art-slidecontainer792222 .art-slide-item
+{
+
+    -webkit-transform: rotate(0);
+    -moz-transform: rotate(0);
+    transform: rotate(0);
+}
+
+.art-slidecontainer792222 .art-slide-item {
+    -webkit-transition: 600ms ease-in-out left;
+    -moz-transition: 600ms ease-in-out left;
+    -ms-transition: 600ms ease-in-out left;
+    -o-transition: 600ms ease-in-out left;
+    transition: 600ms ease-in-out left;
+    position: relative;
+    display: none;
+    width:  100%;
+    height: 100%;
+}
+
+.art-slidecontainer792222 .active, .art-slidecontainer792222 .next, .art-slidecontainer792222 .prev {
+    display: block;
+}
+
+.art-slidecontainer792222 .active {
+    left: 0;
+}
+.ie10 .art-slidecontainer792222 .active {
+    left: 0.1px;
+}
+
+.art-slidecontainer792222 .next, .art-slidecontainer792222 .prev {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.art-slidecontainer792222 .next {
+    left: 100%;
+}
+
+.art-slidecontainer792222 .prev {
+    left: -100%;
+}
+
+.art-slidecontainer792222 .next.forward, .art-slidecontainer792222 .prev.back {
+    left: 0;
+}
+.ie10 .art-slidecontainer792222 .next.forward, .art-slidecontainer792222 .prev.back {
+    left: 0.1px;
+}
+
+.art-slidecontainer792222 .active.forward {
+    left: -100%;
+}
+
+.art-slidecontainer792222 .active.back {
+    left: 100%;
+}
+
+
+
+
+.art-slide7922220 {
+    background-image:  url('images/slide7922220.jpg');
+        /* background-size:  auto auto; */
+        background-position:  center center;
+    background-repeat: no-repeat;
+}
+
+/* special setup for header/pageslider */
+.responsive .art-header .art-slide7922220 {
+    background-image:  url('images/slide7922220.jpg');
+    background-size: auto auto;
+    background-position:  center center;
+    background-repeat: no-repeat;
+}
+
+.responsive .art-pageslider .art-slide7922220 {
+    background-image:  url('images/slide7922220.jpg');
+    background-size: auto auto;
+    background-position:  center center;
+    background-repeat: no-repeat;
+}
+
+.default-responsive .art-header .art-slide7922220 {
+    background-image: url('images/slide7922220.jpg');
+    background-size: auto auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.default-responsive .art-pageslider .art-slide7922220 {
+    background-image: url('images/slide7922220.jpg');
+    background-size: auto auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+}.art-slide7922221 {
+    background-image:  url('images/slide7922221.jpg');
+        /* background-size:  auto auto; */
+        background-position:  center center;
+    background-repeat: no-repeat;
+}
+
+/* special setup for header/pageslider */
+.responsive .art-header .art-slide7922221 {
+    background-image:  url('images/slide7922221.jpg');
+    background-size: auto auto;
+    background-position:  center center;
+    background-repeat: no-repeat;
+}
+
+.responsive .art-pageslider .art-slide7922221 {
+    background-image:  url('images/slide7922221.jpg');
+    background-size: auto auto;
+    background-position:  center center;
+    background-repeat: no-repeat;
+}
+
+.default-responsive .art-header .art-slide7922221 {
+    background-image: url('images/slide7922221.jpg');
+    background-size: auto auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.default-responsive .art-pageslider .art-slide7922221 {
+    background-image: url('images/slide7922221.jpg');
+    background-size: auto auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+}.art-slide7922222 {
+    background-image:  url('images/slide7922222.jpg');
+        /* background-size:  auto auto; */
+        background-position:  center center;
+    background-repeat: no-repeat;
+}
+
+/* special setup for header/pageslider */
+.responsive .art-header .art-slide7922222 {
+    background-image:  url('images/slide7922222.jpg');
+    background-size: auto auto;
+    background-position:  center center;
+    background-repeat: no-repeat;
+}
+
+.responsive .art-pageslider .art-slide7922222 {
+    background-image:  url('images/slide7922222.jpg');
+    background-size: auto auto;
+    background-position:  center center;
+    background-repeat: no-repeat;
+}
+
+.default-responsive .art-header .art-slide7922222 {
+    background-image: url('images/slide7922222.jpg');
+    background-size: auto auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.default-responsive .art-pageslider .art-slide7922222 {
+    background-image: url('images/slide7922222.jpg');
+    background-size: auto auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+}.art-slide7922223 {
+    background-image:  url('images/slide7922223.jpg');
+        /* background-size:  auto auto; */
+        background-position:  center center;
+    background-repeat: no-repeat;
+}
+
+/* special setup for header/pageslider */
+.responsive .art-header .art-slide7922223 {
+    background-image:  url('images/slide7922223.jpg');
+    background-size: auto auto;
+    background-position:  center center;
+    background-repeat: no-repeat;
+}
+
+.responsive .art-pageslider .art-slide7922223 {
+    background-image:  url('images/slide7922223.jpg');
+    background-size: auto auto;
+    background-position:  center center;
+    background-repeat: no-repeat;
+}
+
+.default-responsive .art-header .art-slide7922223 {
+    background-image: url('images/slide7922223.jpg');
+    background-size: auto auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.default-responsive .art-pageslider .art-slide7922223 {
+    background-image: url('images/slide7922223.jpg');
+    background-size: auto auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+}.art-slide7922224 {
+    background-image:  url('images/slide7922224.jpg');
+        /* background-size:  auto auto; */
+        background-position:  center center;
+    background-repeat: no-repeat;
+}
+
+/* special setup for header/pageslider */
+.responsive .art-header .art-slide7922224 {
+    background-image:  url('images/slide7922224.jpg');
+    background-size: auto auto;
+    background-position:  center center;
+    background-repeat: no-repeat;
+}
+
+.responsive .art-pageslider .art-slide7922224 {
+    background-image:  url('images/slide7922224.jpg');
+    background-size: auto auto;
+    background-position:  center center;
+    background-repeat: no-repeat;
+}
+
+.default-responsive .art-header .art-slide7922224 {
+    background-image: url('images/slide7922224.jpg');
+    background-size: auto auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.default-responsive .art-pageslider .art-slide7922224 {
+    background-image: url('images/slide7922224.jpg');
+    background-size: auto auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.art-slidenavigator792222 {
+  display: inline-block;
+  position: absolute;
+  direction: ltr !important;
+  top: 235px;
+  left: 75.24%;
+  z-index: 101;
+  line-height: 0 !important;
+  -webkit-background-origin: border !important;
+  -moz-background-origin: border !important;
+  background-origin: border-box !important;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-align: center;
+    white-space: nowrap;
+    }
+.art-slidenavigator792222
+{
+background: #B9C2CB;background: -webkit-linear-gradient(top, rgba(232, 235, 238, 0.6) 0, rgba(138, 153, 168, 0.6) 100%) no-repeat;background: -moz-linear-gradient(top, rgba(232, 235, 238, 0.6) 0, rgba(138, 153, 168, 0.6) 100%) no-repeat;background: -o-linear-gradient(top, rgba(232, 235, 238, 0.6) 0, rgba(138, 153, 168, 0.6) 100%) no-repeat;background: -ms-linear-gradient(top, rgba(232, 235, 238, 0.6) 0, rgba(138, 153, 168, 0.6) 100%) no-repeat;-svg-background: linear-gradient(top, rgba(232, 235, 238, 0.6) 0, rgba(138, 153, 168, 0.6) 100%) no-repeat;background: linear-gradient(to bottom, rgba(232, 235, 238, 0.6) 0, rgba(138, 153, 168, 0.6) 100%) no-repeat;
+-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;
+
+
+padding:7px;
+
+
+
+
+
+}
+.art-slidenavigator792222 > a
+{
+background: #728597;background: #728597;background: #728597;background: #728597;background: #728597;-svg-background: #728597;background: #728597;
+-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;
+
+
+
+margin:0 10px 0 0;
+
+width: 10px;
+
+height: 10px;
+}
+.art-slidenavigator792222 > a.active
+{
+background: #FA681E;background: #FA681E;background: #FA681E;background: #FA681E;background: #FA681E;-svg-background: #FA681E;background: #FA681E;
+-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;
+
+
+
+margin:0 10px 0 0;
+
+width: 10px;
+
+height: 10px;
+}
+.art-slidenavigator792222 > a:hover
+{
+background: #455B73;background: #455B73;background: #455B73;background: #455B73;background: #455B73;-svg-background: #455B73;background: #455B73;
+-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;
+
+
+
+margin:0 10px 0 0;
+
+width: 10px;
+
+height: 10px;
+}
+
+.imagens > a
+{
+text-align: center;
+}
+
+
+</style></head>
+<body>
+<div id="art-main">
+    <div class="art-sheet clearfix">
+<header class="art-header">
+
+    <div class="art-shapes">
+        
+            </div>
+
+
+
+
+
+
+                
+                    
+</header>
+<nav class="art-nav">
+    <ul class="art-hmenu"><li><a href="home.html" class="active">HOME</a></li><li><a href="principal.html">Principal</a></li><li><a href="galeria-de-fotos.html">Galeria de fotos</a></li><li><a href="videos.html">Videos</a></li><li><a href="colaboradores.html">Colaboradores</a></li></ul> 
+    </nav>
+<div class="art-layout-wrapper">
+                <div class="art-content-layout">
+                    <div class="art-content-layout-row">
+                        <div class="art-layout-cell art-sidebar1"><div class="art-block clearfix">
+        <div class="art-blockheader">
+            <h3 class="t"></h3>
+        </div>
+        <div class="art-blockcontent"><p><br></p></div>
+</div></div>
+    <table>
+        <tr>
+            <td>
+                        <div class="art-layout-cell art-content"><article class="art-post art-article">
+                                <h2 class="art-postheader"></h2>
+                                                
+                <div class="art-postcontent art-postcontent-0 clearfix"><div class="art-content-layout">
+    <div class="art-content-layout-row">
+    <div class="art-layout-cell layout-item-0" style="width: 100%" >
+        <div class="image-caption-wrapper" style="width: 55%; float: left"><div id="792222" style="position: relative; display: inline-block; z-index: 0; margin: 7px;  border-width: 0px;  float: left;" class="art-collage">
+<div class="art-slider art-slidecontainer792222" data-width="420" data-height="259" >
+    <div class="art-slider-inner">
+<div class="art-slide-item art-slide7922220" >
+
+
+</div>
+<div class="art-slide-item art-slide7922221" >
+
+
+</div>
+<div class="art-slide-item art-slide7922222" >
+
+
+</div>
+<div class="art-slide-item art-slide7922223" >
+
+
+</div>
+<div class="art-slide-item art-slide7922224" >
+
+
+</div>
+
+    </div>
+</div>
+<div class="art-slidenavigator art-slidenavigator792222" data-left="1" data-top="1">
+<a href="#" class="art-slidenavigatoritem"></a><a href="#" class="art-slidenavigatoritem"></a><a href="#" class="art-slidenavigatoritem"></a><a href="#" class="art-slidenavigatoritem"></a><a href="#" class="art-slidenavigatoritem"></a>
+</div>
+
+
+
+    </div>
+
+        
+        </div>
+    </div>
+    </div>
+</div>
+
+</td>
+<td>
+    <br><br><br><h2>Seja Bem vindo ao site do museu virtual de Araçatuba.
+Através do menu de opções você pode navegar pelas paginas do site e conhecer a cidade.
+Obrigado pela visita.
+</h2><br>
+ <br><br><center><embed src="LIBRA/slide1.mp4" height=220></center><br><br><br>
+
+<div class="art-content-layout">
+    <div class="art-content-layout-row">
+    <div class="art-layout-cell layout-item-0" style="width: 50%" >
+        <div style="margin-left: 2em">
+         
+        </div>
+    </div><div class="art-layout-cell layout-item-0" style="width: 50%" >
+        <p></p>
+    </div>
+    </div>
+</div>
+</div>
+
+</td>
+</tr>
+</table>
+
+</article></div>
+                    </div>
+                </div>
+            </div><footer class="art-footer">
+<p><img width="933" height="45" alt="" class="art-lightbox" src="images/barraFerramenta.png"><br></p>
+</footer>
+
+    </div>
+  
+</div>
+
+
+</body></html>
